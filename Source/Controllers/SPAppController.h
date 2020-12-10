@@ -35,7 +35,7 @@
 @class SPBundleEditorController;
 @class SPWindowController;
 
-@import Firebase;
+
 
 @interface SPAppController : NSObject <NSApplicationDelegate, NSOpenSavePanelDelegate, NSFileManagerDelegate, NSWindowDelegate>
 {
@@ -118,5 +118,9 @@
 
 - (NSWindow *)frontDocumentWindow;
 - (void)tabDragStarted:(id)sender;
+
+
+
+
 
 @end

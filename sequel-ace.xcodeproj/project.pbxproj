@@ -142,6 +142,8 @@
 		1AB068B124A355CC00E2AAC2 /* client-key-crlf.pem in Resources */ = {isa = PBXBuildFile; fileRef = 1AB0689924A355B500E2AAC2 /* client-key-crlf.pem */; };
 		1AB068B424A3577C00E2AAC2 /* SPValidateKeyAndCertFiles.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AB068B224A3575600E2AAC2 /* SPValidateKeyAndCertFiles.m */; };
 		1AB925922551550200063446 /* NumberFormatterExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1EE9572551249C0056FECD /* NumberFormatterExtension.swift */; };
+		1ABAAE932581CCD7000219AA /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 1ABAAE922581CCD7000219AA /* FirebaseCrashlytics */; };
+		1ABAAEA92581CF89000219AA /* LoggingHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1ABAAEA82581CF89000219AA /* LoggingHelper.m */; };
 		1ADEA5A324BF1C4800D2140B /* SPDateAdditionsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1ADEA5A224BF1C4800D2140B /* SPDateAdditionsTests.m */; };
 		1ADEA5A424BF1FFB00D2140B /* SPDateAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 58DF9F3215AB26C2003B4330 /* SPDateAdditions.m */; };
 		1AF5A261250AC401009885DF /* SPBracketHighlighter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AF5A25E250AC401009885DF /* SPBracketHighlighter.m */; };
@@ -210,7 +212,6 @@
 		517412302573E10C00EB6935 /* SPPrintUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 5174122F2573E10C00EB6935 /* SPPrintUtility.m */; };
 		517412382573E8F900EB6935 /* EditorQuickLookTypes.plist in Resources */ = {isa = PBXBuildFile; fileRef = 517412372573E8F900EB6935 /* EditorQuickLookTypes.plist */; };
 		517E4512257A954000ED333B /* ContentFilters.plist in Resources */ = {isa = PBXBuildFile; fileRef = 517E4511257A954000ED333B /* ContentFilters.plist */; };
-		5187ADE7257A60A200FF3A9A /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 5187ADE6257A60A200FF3A9A /* FirebaseCrashlytics */; };
 		5193502F2567D2FB001272B5 /* CollectionExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5193502E2567D2FB001272B5 /* CollectionExtension.swift */; };
 		519350302567D2FB001272B5 /* CollectionExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5193502E2567D2FB001272B5 /* CollectionExtension.swift */; };
 		51A709392565B99F001F1D2F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 51A709382565B99F001F1D2F /* Images.xcassets */; };
@@ -761,6 +762,8 @@
 		1AB0689824A355B500E2AAC2 /* client-key-lf.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "client-key-lf.pem"; sourceTree = "<group>"; };
 		1AB0689924A355B500E2AAC2 /* client-key-crlf.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "client-key-crlf.pem"; sourceTree = "<group>"; };
 		1AB068B224A3575600E2AAC2 /* SPValidateKeyAndCertFiles.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPValidateKeyAndCertFiles.m; sourceTree = "<group>"; };
+		1ABAAE982581CE9A000219AA /* LoggingHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoggingHelper.h; sourceTree = "<group>"; };
+		1ABAAEA82581CF89000219AA /* LoggingHelper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoggingHelper.m; sourceTree = "<group>"; };
 		1ADEA5A224BF1C4800D2140B /* SPDateAdditionsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SPDateAdditionsTests.m; sourceTree = "<group>"; };
 		1AF5A25D250AC401009885DF /* SPBracketHighlighter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPBracketHighlighter.h; sourceTree = "<group>"; };
 		1AF5A25E250AC401009885DF /* SPBracketHighlighter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPBracketHighlighter.m; sourceTree = "<group>"; };
@@ -1235,13 +1238,13 @@
 				503CDBB21ACDC204004F8A2F /* Quartz.framework in Frameworks */,
 				265446DF24A1616900376B48 /* libz.tbd in Frameworks */,
 				17AED4161888BD67008E380F /* Security.framework in Frameworks */,
+				1ABAAE932581CCD7000219AA /* FirebaseCrashlytics in Frameworks */,
 				296DC8BF0F9091DF002A3258 /* libicucore.dylib in Frameworks */,
 				8D15AC340486D014006FF6A4 /* Cocoa.framework in Frameworks */,
 				296DC89F0F8FD336002A3258 /* WebKit.framework in Frameworks */,
 				96B0A1512493DF3E007BB270 /* ShortcutRecorder.framework in Frameworks */,
 				9651262224926F1200E65B53 /* QueryKit.framework in Frameworks */,
 				58B907CA11BDA541000826E5 /* PSMTabBar.framework in Frameworks */,
-				5187ADE7257A60A200FF3A9A /* FirebaseCrashlytics in Frameworks */,
 				179ECECA11F265FC009C6A40 /* libbz2.dylib in Frameworks */,
 				9651262424926F1600E65B53 /* SPMySQL.framework in Frameworks */,
 				9C3B9578F38B671A76B32F0E /* libPods-Sequel Ace.a in Frameworks */,
@@ -1829,6 +1832,8 @@
 		17E641470EF01EB8001BC333 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				1ABAAE982581CE9A000219AA /* LoggingHelper.h */,
+				1ABAAEA82581CF89000219AA /* LoggingHelper.m */,
 				17E6414A0EF01EF6001BC333 /* SPAppController.h */,
 				17E6414B0EF01EF6001BC333 /* SPAppController.m */,
 				17D3583C1533766800A654D7 /* Window */,
@@ -2639,7 +2644,7 @@
 			);
 			name = "Sequel Ace";
 			packageProductDependencies = (
-				5187ADE6257A60A200FF3A9A /* FirebaseCrashlytics */,
+				1ABAAE922581CCD7000219AA /* FirebaseCrashlytics */,
 			);
 			productInstallPath = "$(HOME)/Applications";
 			productName = "sequel-pro";
@@ -2674,7 +2679,7 @@
 			);
 			mainGroup = 2A37F4AAFDCFA73011CA2CEA /* sequel-pro */;
 			packageReferences = (
-				5187ADE5257A60A200FF3A9A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				1ABAAE912581CCD7000219AA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = 19C28FB0FE9D524F11CA2CBB /* Products */;
 			projectDirPath = "";
@@ -3214,6 +3219,7 @@
 				1798F1881550175B004B0AB8 /* SPFavoritesImporter.m in Sources */,
 				1798F1951550181B004B0AB8 /* SPGroupNode.m in Sources */,
 				1798F19815501838004B0AB8 /* SPMutableArrayAdditions.m in Sources */,
+				1ABAAEA92581CF89000219AA /* LoggingHelper.m in Sources */,
 				1A1EE94A2551185D0056FECD /* DateFormatterExtension.swift in Sources */,
 				1798F19B1550185B004B0AB8 /* SPTreeNode.m in Sources */,
 				1798F19E15501892004B0AB8 /* SPFlippedView.m in Sources */,
@@ -3979,6 +3985,7 @@
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Source/Sequel-Pro.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = "";
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GENERATE_PKGINFO_FILE = YES;
 				INFOPLIST_FILE = "Resources/Plists/TunnelAssistant-Info.plist";
@@ -4697,20 +4704,20 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		5187ADE5257A60A200FF3A9A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+		1ABAAE912581CCD7000219AA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 7.2.0;
+				minimumVersion = 7.3.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		5187ADE6257A60A200FF3A9A /* FirebaseCrashlytics */ = {
+		1ABAAE922581CCD7000219AA /* FirebaseCrashlytics */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 5187ADE5257A60A200FF3A9A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			package = 1ABAAE912581CCD7000219AA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseCrashlytics;
 		};
 /* End XCSwiftPackageProductDependency section */

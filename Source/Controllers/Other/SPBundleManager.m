@@ -18,6 +18,7 @@
 #import "SPCopyTable.h"
 #import "SPBundleEditorController.h"
 #import "SPDatabaseDocument.h"
+#import "LoggingHelper.h"
 
 
 #import "sequel-ace-Swift.h"
@@ -101,8 +102,7 @@ static SPBundleManager *sharedSPBundleManager = nil;
 #pragma mark - legacy string methods
 - (NSMutableDictionary*)findLegacyStrings:(NSString *)filePath{
 
-	SPLog(@"findLegacyStrings for %@", filePath);
-	CLS_LOG(@"findLegacyStrings for %@", filePath);
+	ComboLog(@"findLegacyStrings for %@", filePath);
 
 	NSMutableArray *filesContainingLegacyStringArr = [NSMutableArray array];
 	NSMutableDictionary *filesContainingLegacyString = [NSMutableDictionary dictionary];
@@ -124,8 +124,7 @@ static SPBundleManager *sharedSPBundleManager = nil;
 
 		// Make sure that the file has been read, log an error if it hasn't.
 		if (!fileContentsString) {
-			SPLog(@"Error reading file: %@", fileURL.absoluteString);
-			CLS_LOG(@"Error reading file: %@", fileURL.absoluteString);
+			ComboLog(@"Error reading file: %@", fileURL.absoluteString);
 			continue;
 		}
 
@@ -179,8 +178,7 @@ static SPBundleManager *sharedSPBundleManager = nil;
 		[tmpStr writeToURL:url atomically:NO encoding:NSUTF8StringEncoding error:&err];
 
 		if(err){
-			CLS_LOG(@"failed to write new str to %@. Error: %@", url.absoluteString, err.localizedDescription);
-			SPLog(@"failed to write new str to %@. Error: %@", url.absoluteString, err.localizedDescription);
+			ComboLog(@"failed to write new str to %@. Error: %@", url.absoluteString, err.localizedDescription);
 		}
 	}
 }
@@ -189,7 +187,6 @@ static SPBundleManager *sharedSPBundleManager = nil;
 - (void)renameLegacyBundles{
 
 	SPLog(@"renameLegacyBundles");
-	CLS_LOG(@"renameLegacyBundles");
 
 	// if we find any legacy bundles we'll need to change the dict, so take a copy
 	NSMutableDictionary *bundleItemsCopy = [bundleItems mutableCopy];
@@ -221,8 +218,7 @@ static SPBundleManager *sharedSPBundleManager = nil;
 					SPLog(@"File DOES NOT YET exist at “%@”", migratedPath);
 
 					if (![fileManager moveItemAtPath:legacyPath toPath:migratedPath error:&error]) {
-						SPLog(@"Could not move “%@” to %@. Error: %@", legacyPath, migratedPath, error.localizedDescription);
-						CLS_LOG(@"Could not move “%@” to %@. Error: %@", legacyPath, migratedPath, error.localizedDescription);
+						ComboLog(@"Could not move “%@” to %@. Error: %@", legacyPath, migratedPath, error.localizedDescription);
 						[self doOrDoNotBeep:legacyPath];
 					}
 					else{
@@ -250,8 +246,7 @@ static SPBundleManager *sharedSPBundleManager = nil;
 						}
 
 						if(!cmdData || readError) {
-							SPLog(@"“%@” file couldn't be read. (error=%@)", infoPath, readError.localizedDescription);
-							CLS_LOG(@"“%@” file couldn't be read. (error=%@)", infoPath, readError.localizedDescription);
+							ComboLog(@"“%@” file couldn't be read. (error=%@)", infoPath, readError.localizedDescription);
 							[NSAlert createWarningAlertWithTitle:[NSString stringWithFormat:NSLocalizedString(@"File couldn't be read: %@\n\nIt will be deleted.", @"File couldn't be read nIt will be deleted"), infoPath] message:readError.localizedDescription callback:nil];
 							[self doOrDoNotBeep:infoPath];
 
@@ -269,8 +264,7 @@ static SPBundleManager *sharedSPBundleManager = nil;
 							[fileManager removeItemAtPath:infoPath error:&readError];
 
 							if(readError) {
-								SPLog(@"Could not delete %@. Error: %@", infoPath, readError.localizedDescription);
-								CLS_LOG(@"Could not delete %@. Error: %@", infoPath, readError.localizedDescription);
+								ComboLog(@"Could not delete %@. Error: %@", infoPath, readError.localizedDescription);
 								[self doOrDoNotBeep:infoPath];
 							}
 							else{
@@ -278,8 +272,7 @@ static SPBundleManager *sharedSPBundleManager = nil;
 									readError = nil;
 									[saveDict writeToURL:[NSURL fileURLWithPath:infoPath] error:&readError];
 									if(readError){
-										SPLog(@"Could not delete %@. Error: %@", infoPath, readError.localizedDescription);
-										CLS_LOG(@"Could not delete %@. Error: %@", infoPath, readError.localizedDescription);
+										ComboLog(@"Could not delete %@. Error: %@", infoPath, readError.localizedDescription);
 									}
 									else{
 										SPLog(@"Successfully migrated: %@", migratedPath);
@@ -350,8 +343,7 @@ static SPBundleManager *sharedSPBundleManager = nil;
 	SPLog(@"the path %@", thePath);
 
 	if(![fileManager fileExistsAtPath:thePath isDirectory:nil]) {
-		SPLog(@"file does not exist %@", thePath);
-		CLS_LOG(@"file does not exist %@", thePath);
+		ComboLog(@"file does not exist %@", thePath);
 		return;
 	}
 
@@ -360,8 +352,7 @@ static SPBundleManager *sharedSPBundleManager = nil;
 	[fileManager removeItemAtPath:thePath error:&error];
 
 	if(error != nil) {
-		SPLog(@"file could not be deleted: %@", thePath);
-		CLS_LOG(@"file could not be deleted: %@", thePath);
+		ComboLog(@"file could not be deleted: %@", thePath);
 		return;
 	}
 
@@ -460,8 +451,7 @@ static SPBundleManager *sharedSPBundleManager = nil;
 						}
 
 						if(!cmdData || readError) {
-							SPLog(@"“%@” file couldn't be read. (error=%@)", infoPath, readError.localizedDescription);
-							CLS_LOG(@"“%@” file couldn't be read. (error=%@)", infoPath, readError.localizedDescription);
+							ComboLog(@"“%@” file couldn't be read. (error=%@)", infoPath, readError.localizedDescription);
 							[NSAlert createWarningAlertWithTitle:[NSString stringWithFormat:NSLocalizedString(@"File couldn't be read: %@\n\nIt will be deleted.", @"File couldn't be read nIt will be deleted"), infoPath] message:readError.localizedDescription callback:nil];
 							[self doOrDoNotBeep:bundle];
 
@@ -518,8 +508,7 @@ static SPBundleManager *sharedSPBundleManager = nil;
 											}
 
 											if(!cmdDataOld || readError) {
-												SPLog(@"“%@” file couldn't be read. (error=%@)", oldBundlePath, readError.localizedDescription);
-												CLS_LOG(@"“%@” file couldn't be read. (error=%@)", oldBundlePath, readError.localizedDescription);
+												ComboLog(@"“%@” file couldn't be read. (error=%@)", oldBundlePath, readError.localizedDescription);
 //												NSBeep();
 //												continue;
 											}
@@ -541,8 +530,7 @@ static SPBundleManager *sharedSPBundleManager = nil;
 												[correctedOldBundle appendString:SPUserBundleFileExtension];
 											}
 											if(![fileManager copyItemAtPath:correctedOldBundle toPath:duplicatedBundle error:&anError]) {
-												SPLog(@"“%@” file couldn't be copied to update it. (error=%@)", bundle, anError.localizedDescription);
-												CLS_LOG(@"“%@” file couldn't be copied to update it. (error=%@)", bundle, anError.localizedDescription);
+												ComboLog(@"“%@” file couldn't be copied to update it. (error=%@)", bundle, anError.localizedDescription);
 												NSBeep();
 												continue;
 											}
@@ -565,8 +553,7 @@ static SPBundleManager *sharedSPBundleManager = nil;
 												}
 
 												if (![dupData count] || readError) {
-													SPLog(@"“%@” file couldn't be read. (error=%@)", duplicatedBundleCommand, readError.localizedDescription);
-													CLS_LOG(@"“%@” file couldn't be read. (error=%@)", duplicatedBundleCommand, readError.localizedDescription);
+													ComboLog(@"“%@” file couldn't be read. (error=%@)", duplicatedBundleCommand, readError.localizedDescription);
 													NSBeep();
 													continue;
 												}
@@ -580,8 +567,7 @@ static SPBundleManager *sharedSPBundleManager = nil;
 												NSError *err = nil;
 												[dupData writeToURL:[NSURL fileURLWithPath:duplicatedBundleCommand] error:&err];
 												if(err){
-													SPLog(@"Could not delete %@. Error: %@", duplicatedBundleCommand, err.localizedDescription);
-													CLS_LOG(@"Could not delete %@. Error: %@", duplicatedBundleCommand, err.localizedDescription);
+													ComboLog(@"Could not delete %@. Error: %@", duplicatedBundleCommand, err.localizedDescription);
 												}
 											} else {
 												[dupData writeToFile:duplicatedBundleCommand atomically:YES];
@@ -589,8 +575,7 @@ static SPBundleManager *sharedSPBundleManager = nil;
 
 											error = nil;
 											if(![fileManager removeItemAtPath:correctedOldBundle error:&error]) {
-												SPLog(@"“%@” removeItemAtPath. (error=%@)", correctedOldBundle, error.localizedDescription);
-												CLS_LOG(@"“%@” removeItemAtPath. (error=%@)", correctedOldBundle, error.localizedDescription);
+												ComboLog(@"“%@” removeItemAtPath. (error=%@)", correctedOldBundle, error.localizedDescription);
 												[fileManager removeItemAtPath:oldBundlePath error:&error];
 											}
 											else{
@@ -606,8 +591,7 @@ static SPBundleManager *sharedSPBundleManager = nil;
 											SPLog(@"default bundle not modified, delete and ....");
 											// If no modifications are done simply remove the old one
 											if(![fileManager removeItemAtPath:oldBundle error:nil] && ![fileManager removeItemAtPath:oldBundlePath.stringByDeletingLastPathComponent error:nil]) {
-												SPLog(@"Couldn't remove “%@” to update it", bundle);
-												CLS_LOG(@"Couldn't remove “%@” to update it", bundle);
+												ComboLog(@"Couldn't remove “%@” to update it", bundle);
 												NSBeep();
 												continue;
 											}
@@ -630,8 +614,7 @@ static SPBundleManager *sharedSPBundleManager = nil;
 									[fileManager copyItemAtPath:orgPath toPath:newPath error:&error];
 									if(error != nil) {
 										NSBeep();
-										SPLog(@"Default Bundle “%@” couldn't be copied to '%@'", bundle, newInfoPath);
-										CLS_LOG(@"Default Bundle “%@” couldn't be copied to '%@'", bundle, newInfoPath);
+										ComboLog(@"Default Bundle “%@” couldn't be copied to '%@'", bundle, newInfoPath);
 										continue;
 									}
 									infoPath = [NSString stringWithString:newInfoPath];
@@ -649,8 +632,7 @@ static SPBundleManager *sharedSPBundleManager = nil;
 									infoPath, @"path", nil] forKey:[cmdData objectForKey:SPBundleFileUUIDKey]];
 
 						} else {
-							SPLog(@"No UUID for %@", bundle);
-							CLS_LOG(@"No UUID for %@", bundle);
+							ComboLog(@"No UUID for %@", bundle);
 							NSBeep();
 							continue;
 						}
@@ -1068,8 +1050,7 @@ static SPBundleManager *sharedSPBundleManager = nil;
 	if (![fileManager fileExistsAtPath:bundlePath isDirectory:nil]) {
 		if (![fileManager createDirectoryAtPath:bundlePath withIntermediateDirectories:YES attributes:nil error:nil]) {
 			NSBeep();
-			SPLog(@"Couldn't create folder “%@”", bundlePath);
-			CLS_LOG(@"Couldn't create folder “%@”", bundlePath);
+			ComboLog(@"Couldn't create folder “%@”", bundlePath);
 			return;
 		}
 	}
@@ -1091,8 +1072,7 @@ static SPBundleManager *sharedSPBundleManager = nil;
 		}
 
 		if (!cmdData || error) {
-			SPLog(@"“%@/%@” file couldn't be read. (error=%@)", filePath, SPBundleFileName, error.localizedDescription);
-			CLS_LOG(@"“%@/%@” file couldn't be read. (error=%@)", filePath, SPBundleFileName, error.localizedDescription);
+			ComboLog(@"“%@/%@” file couldn't be read. (error=%@)", filePath, SPBundleFileName, error.localizedDescription);
 			[self doOrDoNotBeep:filePath];
 			return;
 		}

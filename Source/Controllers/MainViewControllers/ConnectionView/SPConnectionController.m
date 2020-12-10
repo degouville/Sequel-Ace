@@ -56,6 +56,8 @@
 #import "SPFunctions.h"
 #import "SPBundleHTMLOutputController.h"
 #import "SPBundleManager.h"
+#import "LoggingHelper.h"
+
 @import Firebase;
 
 
@@ -500,14 +502,12 @@ static NSComparisonResult _compareFavoritesUsingKey(id favorite1, id favorite2, 
 					[self->prefs setObject:self->bookmarks forKey:SPSecureBookmarks];
 				}
 				else{
-					SPLog(@"Problem creating bookmark - %@ : %@",self->keySelectionPanel.URL.absoluteString, [error localizedDescription]);
-					CLS_LOG(@"Problem creating bookmark - %@ : %@",self->keySelectionPanel.URL.absoluteString, [error localizedDescription]);
+					ComboLog(@"Problem creating bookmark - %@ : %@",self->keySelectionPanel.URL.absoluteString, [error localizedDescription]);
 				}
 			}
 		}
 		else{
-			SPLog(@"Problem startAccessingSecurityScopedResource for - %@",self->keySelectionPanel.URL.absoluteString);
-			CLS_LOG(@"Problem startAccessingSecurityScopedResource for - %@",self->keySelectionPanel.URL.absoluteString);
+			ComboLog(@"Problem startAccessingSecurityScopedResource for - %@",self->keySelectionPanel.URL.absoluteString);
 		}
 		// SSH key file selection
 		if (sender == self->sshSSHKeyButton) {
@@ -3288,16 +3288,14 @@ static NSComparisonResult _compareFavoritesUsingKey(id favorite1, id favorite2, 
 		resolvedBookmarks = [[NSMutableArray alloc] init];
 
 
-		SPLog(@"prefs: %@", prefs.dictionaryRepresentation);
-		CLS_LOG(@"prefs: %@", prefs.dictionaryRepresentation);
+		ComboLog(@"prefs: %@", prefs.dictionaryRepresentation);
 
 		id o;
 		if((o = [prefs objectForKey:SPSecureBookmarks])){
 			[bookmarks setArray:o];
 		}
 		else{
-			SPLog(@"Could not load SPSecureBookmarks from prefs");
-			CLS_LOG(@"Could not load SPSecureBookmarks from prefs");
+			ComboLog(@"Could not load SPSecureBookmarks from prefs");
 		}
 		
 		// we need to re-request access to places we've been before..
@@ -3402,14 +3400,12 @@ static NSComparisonResult _compareFavoritesUsingKey(id favorite1, id favorite2, 
 				[resolvedBookmarks addObject:tmpURL];
 			}
 			else{
-				SPLog(@"Problem resolving bookmark - %@ : %@",key, [error localizedDescription]);
-				CLS_LOG(@"Problem resolving bookmark - %@ : %@",key, [error localizedDescription]);
+				ComboLog(@"Problem resolving bookmark - %@ : %@",key, [error localizedDescription]);
 			}
 		}];
 	}];
 
-	SPLog(@"resolvedBookmarks - %@",resolvedBookmarks);
-	CLS_LOG(@"resolvedBookmarks - %@",resolvedBookmarks);
+	ComboLog(@"resolvedBookmarks - %@",resolvedBookmarks);
 
 }
 

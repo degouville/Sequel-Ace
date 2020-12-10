@@ -36,6 +36,7 @@
 #import "SPAppController.h"
 #import "SPNSMutableDictionaryAdditions.h"
 #import "SPBundleManager.h"
+#import "LoggingHelper.h"
 
 #import "sequel-ace-Swift.h"
 
@@ -998,8 +999,7 @@
 		NSNumber *bundleVersion = [bundle safeObjectForKey:SPBundleVersionKey];
 
 		if(bundleVersion.longValue < SPBundleCurrentVersion){
-			SPLog(@"Got v1 bundle! : %@", bundleName);
-			CLS_LOG(@"Got v1 bundle! : %@", bundleName);
+			ComboLog(@"Got v1 bundle! : %@", bundleName);
 		}
 
 		SPLog(@"bundleVersion = %@", bundleVersion);
@@ -1068,8 +1068,7 @@
 	if (@available(macOS 10.13, *)) {
 		[saveDict writeToURL:[NSURL fileURLWithPath:cmdFilePath] error:&error];
 		if(error){
-			SPLog(@"Could not write %@. Error: %@", cmdFilePath, error.localizedDescription);
-			CLS_LOG(@"Could not write %@. Error: %@", cmdFilePath, error.localizedDescription);
+			ComboLog(@"Could not write %@. Error: %@", cmdFilePath, error.localizedDescription);
 		}
 
 	} else {

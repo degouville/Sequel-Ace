@@ -50,6 +50,8 @@
 #import "SPPDFExporterProtocol.h"
 #import "SPHTMLExporterProtocol.h"
 #import "sequel-ace-Swift.h"
+#import "LoggingHelper.h"
+
 @import Firebase;
 
 #import <SPMySQL/SPMySQL.h>
@@ -294,8 +296,7 @@ static inline void SetOnOff(NSNumber *ref,id obj);
 		[bookmarks setArray:o];
 	}
 	else{
-		SPLog(@"Could not load SPSecureBookmarks from prefs");
-		CLS_LOG(@"Could not load SPSecureBookmarks from prefs");
+		ComboLog(@"Could not load SPSecureBookmarks from prefs");
 	}
 	
 	// overwrite defaults with user settings from last export
@@ -662,14 +663,12 @@ set_input:
 						[self->prefs setObject:self->bookmarks forKey:SPSecureBookmarks];
 					}
 					else{
-						SPLog(@"Problem creating bookmark - %@ : %@",self->changeExportOutputPathPanel.URL.absoluteString, [error localizedDescription]);
-						CLS_LOG(@"Problem creating bookmark - %@ : %@",self->changeExportOutputPathPanel.URL.absoluteString, [error localizedDescription]);
+						ComboLog(@"Problem creating bookmark - %@ : %@",self->changeExportOutputPathPanel.URL.absoluteString, [error localizedDescription]);
 					}
 				}
 			}
 			else{
-				SPLog(@"Problem startAccessingSecurityScopedResource for - %@",self->changeExportOutputPathPanel.URL.absoluteString);
-				CLS_LOG(@"Problem startAccessingSecurityScopedResource for - %@",self->changeExportOutputPathPanel.URL.absoluteString);
+				ComboLog(@"Problem startAccessingSecurityScopedResource for - %@",self->changeExportOutputPathPanel.URL.absoluteString);
 			}
         }
     }];		

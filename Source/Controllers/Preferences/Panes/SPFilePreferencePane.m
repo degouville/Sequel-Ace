@@ -29,6 +29,8 @@
 //  More info at <https://github.com/sequelpro/sequelpro>
 
 #import "SPFilePreferencePane.h"
+#import "LoggingHelper.h"
+
 @import Firebase;
 
 @interface SPFilePreferencePane ()
@@ -99,8 +101,7 @@
 		[bookmarks setArray:o];
 	}
 	else{
-		SPLog(@"Could not load SPSecureBookmarks from prefs");
-		CLS_LOG(@"Could not load SPSecureBookmarks from prefs");
+		ComboLog(@"Could not load SPSecureBookmarks from prefs");
 	}
 	
 	// we need to re-request access to places we've been before..
@@ -153,14 +154,12 @@
 				[resolvedBookmarks addObject:tmpURL];
 			}
 			else{
-				SPLog(@"Problem resolving bookmark - %@ : %@",key, [error localizedDescription]);
-				CLS_LOG(@"Problem resolving bookmark - %@ : %@",key, [error localizedDescription]);
+				ComboLog(@"Problem resolving bookmark - %@ : %@",key, [error localizedDescription]);
 			}
 		}];
 	}];
 
-	SPLog(@"resolvedBookmarks - %@",resolvedBookmarks);
-	CLS_LOG(@"resolvedBookmarks - %@",resolvedBookmarks);
+	ComboLog(@"resolvedBookmarks - %@",resolvedBookmarks);
 
 }
 
@@ -286,14 +285,12 @@
 						[self->prefs setObject:self->bookmarks forKey:SPSecureBookmarks];
 					}
 					else{
-						SPLog(@"Problem creating bookmark - %@ : %@",url.absoluteString, [error localizedDescription]);
-						CLS_LOG(@"Problem creating bookmark - %@ : %@",url.absoluteString, [error localizedDescription]);
+						ComboLog(@"Problem creating bookmark - %@ : %@",url.absoluteString, [error localizedDescription]);
 					}
 				}
 			}
 			else{
-				SPLog(@"Problem startAccessingSecurityScopedResource for - %@",url.absoluteString);
-				CLS_LOG(@"Problem startAccessingSecurityScopedResource for - %@",url.absoluteString);
+				ComboLog(@"Problem startAccessingSecurityScopedResource for - %@",url.absoluteString);
 			}
 		}];
 		

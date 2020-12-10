@@ -36,6 +36,8 @@
 #import "SPThreadAdditions.h"
 #import "SPOSInfo.h"
 #import "SPFileHandle.h"
+#import "LoggingHelper.h"
+
 @import Firebase;
 
 #import <netinet/in.h>
@@ -381,8 +383,7 @@ static unsigned short getRandomPort(void);
 		TA(@"-F", sshConfigFile);
 
 		if(![SPFileHandle fileHandleForReadingAtPath:sshConfigFile]){
-			SPLog(@"Cannot read sshConfigFile: %@",sshConfigFile);
-			CLS_LOG(@"Cannot read sshConfigFile: %@",sshConfigFile);
+			ComboLog(@"Cannot read sshConfigFile: %@",sshConfigFile);
 		}
 
 		// Specify an identity file if available
@@ -421,8 +422,7 @@ static unsigned short getRandomPort(void);
 		authenticationAppPath = [[NSBundle mainBundle] pathForAuxiliaryExecutable:@"SequelAceTunnelAssistant"];
 		taskEnvironment = [[NSMutableDictionary alloc] initWithDictionary:[[NSProcessInfo processInfo] environment]];
 
-		SPLog(@"taskEnvironment: %@",taskEnvironment);
-		CLS_LOG(@"taskEnvironment: %@",taskEnvironment);
+		ComboLog(@"taskEnvironment: %@",taskEnvironment);
 
 		[taskEnvironment setObject:authenticationAppPath forKey:@"SSH_ASKPASS"];
 		[taskEnvironment setObject:@":0" forKey:@"DISPLAY"];
