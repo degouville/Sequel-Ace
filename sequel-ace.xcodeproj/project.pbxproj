@@ -2246,6 +2246,8 @@
 		507FF10E1BBCC4A900104523 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				1ABAAE982581CE9A000219AA /* LoggingHelper.h */,
+				1ABAAEA82581CF89000219AA /* LoggingHelper.m */,
 				507FF1101BBCC4C400104523 /* SPFunctions.h */,
 				507FF1111BBCC57600104523 /* SPFunctions.m */,
 				5089B0251BE714E300E226CD /* SPIdMenu.h */,
