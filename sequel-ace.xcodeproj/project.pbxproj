@@ -123,6 +123,8 @@
 		1A47996F2543343A00D29E6E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1A47996E2543343A00D29E6E /* GoogleService-Info.plist */; };
 		1A564F74237E2E4958CA593A /* SPPillAttachmentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A56463D14569A0B56EE8BAC /* SPPillAttachmentCell.m */; };
 		1A5A83532545DA8B00EDC196 /* SPObjectAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 584D878A15140FEB00F24774 /* SPObjectAdditions.m */; };
+		1A73F9E62586634800BAF253 /* LoggingHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A73F9E52586634700BAF253 /* LoggingHelper.m */; };
+		1A73F9E72586634800BAF253 /* LoggingHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A73F9E52586634700BAF253 /* LoggingHelper.m */; };
 		1A85CB8D2493BC4A00B57B93 /* SPSyncTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A85CB8C2493BC4A00B57B93 /* SPSyncTests.m */; };
 		1A8B53572584520800526DED /* SPURLAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A8B53562584520800526DED /* SPURLAdditions.m */; };
 		1A8B53732584573500526DED /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 1A8B53722584573500526DED /* FirebaseCrashlytics */; };
@@ -748,6 +750,8 @@
 		1A479B19254375D200D29E6E /* Pods-Sequel Ace-acknowledgements.markdown */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "Pods-Sequel Ace-acknowledgements.markdown"; sourceTree = "<group>"; };
 		1A56463D14569A0B56EE8BAC /* SPPillAttachmentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPPillAttachmentCell.m; sourceTree = "<group>"; };
 		1A564C0C0FFB444D2E5CA447 /* SPPillAttachmentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPPillAttachmentCell.h; sourceTree = "<group>"; };
+		1A73F9E12586634700BAF253 /* LoggingHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoggingHelper.h; path = Source/Controllers/LoggingHelper.h; sourceTree = SOURCE_ROOT; };
+		1A73F9E52586634700BAF253 /* LoggingHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoggingHelper.m; path = Source/Controllers/LoggingHelper.m; sourceTree = SOURCE_ROOT; };
 		1A85CB8C2493BC4A00B57B93 /* SPSyncTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SPSyncTests.m; sourceTree = "<group>"; };
 		1A8B53552584520800526DED /* SPURLAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPURLAdditions.h; sourceTree = "<group>"; };
 		1A8B53562584520800526DED /* SPURLAdditions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SPURLAdditions.m; sourceTree = "<group>"; };
@@ -1531,6 +1535,8 @@
 		173E70D5107FF7AF008733C9 /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				1A73F9E12586634700BAF253 /* LoggingHelper.h */,
+				1A73F9E52586634700BAF253 /* LoggingHelper.m */,
 				589235311020C1230011DE00 /* SPHistoryController.h */,
 				589235301020C1230011DE00 /* SPHistoryController.m */,
 				5806B76211A991EC00813A88 /* SPDocumentController.h */,
@@ -3014,6 +3020,7 @@
 				1A85CB8D2493BC4A00B57B93 /* SPSyncTests.m in Sources */,
 				1ADEA5A324BF1C4800D2140B /* SPDateAdditionsTests.m in Sources */,
 				507FF1621BBF0D5000104523 /* SPTableCopyTest.m in Sources */,
+				1A73F9E72586634800BAF253 /* LoggingHelper.m in Sources */,
 				50837F741E50DCD4004FAE8A /* SPJSONFormatterTests.m in Sources */,
 				1AB925922551550200063446 /* NumberFormatterExtension.swift in Sources */,
 				50EA926A1AB246B8008D3C4F /* SPDatabaseActionTest.m in Sources */,
@@ -3241,6 +3248,7 @@
 				5843E247162B555B00EAA6D1 /* SPThreadAdditions.m in Sources */,
 				58D2A6A716FBDEFF002EB401 /* SPComboPopupButton.m in Sources */,
 				65F52CC824AE21D600FED3CB /* SPFilePreferencePane.m in Sources */,
+				1A73F9E62586634800BAF253 /* LoggingHelper.m in Sources */,
 				501B1D181728A3DA0017C92E /* SPCharsetCollationHelper.m in Sources */,
 				50E217B318174246009D3580 /* SPColorSelectorView.m in Sources */,
 				50E217B618174280009D3580 /* SPFavoriteColorSupport.m in Sources */,

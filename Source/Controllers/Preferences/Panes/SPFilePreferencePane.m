@@ -102,6 +102,7 @@
 	}
 	else{
 		ComboLog(@"Could not load SPSecureBookmarks from prefs");
+		[bookmarks setArray:@[]];
 	}
 	
 	// we need to re-request access to places we've been before..

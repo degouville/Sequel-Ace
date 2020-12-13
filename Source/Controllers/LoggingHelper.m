@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "LoggingHelper.h"
 #import "SPFunctions.h"
-@import Firebase;
+#import <FirebaseCrashlytics/FirebaseCrashlytics.h>
 
 @implementation LoggingHelper
 

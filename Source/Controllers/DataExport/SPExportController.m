@@ -297,6 +297,7 @@ static inline void SetOnOff(NSNumber *ref,id obj);
 	}
 	else{
 		ComboLog(@"Could not load SPSecureBookmarks from prefs");
+		[bookmarks setArray:@[]];
 	}
 	
 	// overwrite defaults with user settings from last export

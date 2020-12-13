@@ -64,6 +64,7 @@ static NSString *SPSSLCipherPboardTypeName = @"SSLCipherPboardType";
 		}
 		else{
 			ComboLog(@"Could not load SPSecureBookmarks from prefs");
+			[bookmarks setArray:@[]];
 		}
 		
 		[self reRequestSecureAccess];
